@@ -7,7 +7,21 @@
 // @lc code=start
 class Solution {
 public:
-    bool backspaceCompare(string s, string t) {
+    bool backspaceCompare(string s, string t) 
+    {
+        int s_size = s.size();
+        
+        int slow = 0;
+        for (int fast = 0; fast < s_size; fast++)
+        {
+            if (s[fast] == '#')
+            {
+                
+            }
+            
+        }
+        
+        
 
     }
 };
