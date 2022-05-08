@@ -10,10 +10,11 @@ class Solution
 public:
     vector<int> spiralOrder(vector<vector<int>> &matrix)
     {
-        vector<int> ans;
-        int m = matrix.size(); // 行
-        int n = matrix[0].size();  // 列
-        int size = m*n;
+
+        int m = matrix.size();    // 行
+        int n = matrix[0].size(); // 列
+        int size = m * n;
+        vector<int> ans(size, 0);
 
         int left = 0, right = n - 1, top = 0, down = m - 1;
 
@@ -21,56 +22,37 @@ public:
         while (cnt < size)
         {
             // 向右
-            for (int i = left; i <= right; i++)
+            for (int i = left; i <= right && cnt < size; i++)
             {
-                ans.push_back(matrix[top][i]);
-                cnt++;
+                ans[cnt++] = matrix[top][i];
+                
             }
-            if (cnt < size)
-            {
-                top++;
-            }
-            else break;
-            
-            
+            top++;
 
             // 向下
-            for (int i = top; i <= down; i++)
+            for (int i = top; i <= down && cnt < size; i++)
             {
-                ans.push_back(matrix[i][right]);
-                cnt++;
+                ans[cnt++] = matrix[i][right];
+                
             }
-            if (cnt < size)
-            {
-                right--;
-            }
-            else break;
+            right--;
 
             // 向左
-            for (int i = right; i >= left; i--)
+            for (int i = right; i >= left && cnt < size; i--)
             {
-                ans.push_back(matrix[down][i]);
-                cnt++;
+                ans[cnt++] = matrix[down][i];
+                
             }
-            if (cnt < size)
-            {
-                down--;
-            }
-            else break;
+            down--;
 
             // 向上
-            for (int i = down; i >= top; i--)
+            for (int i = down; i >= top && cnt < size; i--)
             {
-                ans.push_back(matrix[i][left]);
-                cnt++;
+                ans[cnt++] = matrix[i][left];
+                
             }
-            if (cnt < size)
-            {
-                left++;
-            }
-            else break;
+            left++;
         }
-
 
         return ans;
     }
